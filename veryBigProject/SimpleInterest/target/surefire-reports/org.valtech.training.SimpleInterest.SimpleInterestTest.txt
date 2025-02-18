@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.valtech.training.SimpleInterest.SimpleInterestTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.valtech.training.SimpleInterest.SimpleInterestTest
