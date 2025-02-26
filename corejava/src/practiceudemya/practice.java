@@ -1,72 +1,60 @@
 package practiceudemya;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class practice {
 
 	
 	public static void main(String[] args) {
-//		byte a=10;
-//		byte b=20;
-//		int c=a*b;
-//		int x=10;
-//		int y=10;
-//		boolean flag=x==y;
-//		System.out.println(flag);
-//		double xr=8.8;
-//		double yr=9.8;
-//		boolean result=xr<=yr;
-//		System.out.println(result);
-//		int nums[][]=new int[3][];
-//		
-//		for(int i=0;i<3;i++) {
-//			for(int j=0;j<4;j++) {
-//				nums[i][j]=(int)(Math.random()*100);
-//			}
-//		}
-//		
-//		
-//		for(int i=0;i<3;i++) {
-//			for(int j=0;j<4;j++) {
-//				System.out.println(nums[i][j]+"");
-//			}
-//			System.out.println();
-//		}
-//		
-//		for(int n[]:nums) {
-//			for(int m:n) {
-//				System.out.println(m);
-//			}
-//		}
-//		
-//		int nums1[][]=new int[3][];
-//		nums1[0]=new int[3];
-//		nums1[1]=new int[4];
-//		nums1[2]=new int[5];
-//		
-//		for(int i=0;i<nums1.length;i++) {
-//			for(int j=0;j<nums[i].length;j++) {
-//				nums[i][j]=(int)(Math.random()*10);
-//			}
-//		}
-//		
-//		for(int i=0;i<3;i++) {
-//			for(int j=0;j<4;j++) {
-//				System.out.println(nums1[i][j]+"");
-//			}
-//			System.out.println();
-//		}
-//		
-//		for(int n[]:nums) {
-//			for(int m:n) {
-//				System.out.println(m+ "");
-//			}
-//			System.out.println();
-//		}
-		StringBuffer sb=new StringBuffer("Navin");
-		sb.append("Reddy");
-		System.out.println(sb.capacity());
-		System.out.println(sb);
-		String str=sb.toString();
+//
+//		StringBuffer sb=new StringBuffer("Navin");
+//		sb.append("Reddy");
+//		System.out.println(sb.capacity());
+//		System.out.println(sb);
+//		String str=sb.toString();
 		
+		List<Integer>nums=Arrays.asList(4,5,6,7,8,9,3);
+		Stream<Integer>sortedValues=nums.stream().sorted();
+		sortedValues.forEach(n->System.out.println(n));
+		
+		StringBuilder st=new StringBuilder("Tej");
+		System.out.println("Tej"+st.hashCode());
+		st.append("ROHIT SHARMA");
+		System.out.println("Capacity after Rohit Sharma "+st.capacity());
+		System.out.println("After Rohit Sharma"+st.hashCode());
+		st.append("MSDHONI");
+		System.out.println("After MS DHONI"+st.hashCode());
+		System.out.println(st.capacity());
+		System.out.println("Capacity after MS DHONI "+st.capacity());
+		StringBuilder sk=st.append("RAMHANUMANSITALAXMAN");
+		System.out.println(st.capacity());
+		System.out.println(st.hashCode());
+		System.out.println(st==sk);
+		
+		String sj="MAHADEV";
+		String sl="PARVATI";
+		String som="MAHADEVPARVATI";
+		StringBuilder so=new StringBuilder(sj.concat(sl))   ;
+//		System.out.println(so==sl);
+		System.out.println(so.equals(som));
+		String kailash="MAHADEV"+"PARVATI";
+		System.out.println(kailash);
+		System.out.println(som==kailash);
+		int size=10_000;
+		List<Integer>ls=new ArrayList<>(size);
+		Random ran=new Random();
+		
+		for(int i=0;i<=size;i++) {
+			ls.add(ran.nextInt(100));
+		}
+		
+		int sum3=(ls.stream().mapToInt(n->n*2)).sum();
+		System.out.println("SUM3"+sum3);
 		
 	}
 }

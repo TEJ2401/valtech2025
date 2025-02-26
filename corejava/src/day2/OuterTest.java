@@ -35,7 +35,7 @@ class OuterTest {
 		System.out.println(myNewCars);
 		
 		System.out.println(cars.stream().filter(car->!"Honda".equals(car.getMake())).collect(Collectors.toList()));
-		System.out.println(cars.stream().map(car->car.getMake()).collect(Collectors.toSet()));
+		System.out.println(cars.stream().map(car->car.getMake()).collect(Collectors.toSet());
 		
 	}
 

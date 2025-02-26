@@ -29,6 +29,7 @@ public class ClaasOne {
     	System.out.println(a2.hashCode());
     	System.out.println(a1.hashCode());
     	System.out.println(a2==a3);
+    	int[]arr= new int[] {1,2,3};
     	
 	}
 

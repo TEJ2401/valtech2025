@@ -121,6 +121,7 @@ class IOTest {
 			byte[]buff=new byte[4];
 			int i=0;
 			while((i=is.read(buff))!=-1) {
+				is.read
 				System.out.println(new String(buff,0,i));
 			}
 	}

@@ -11,6 +11,8 @@ public class SessionService {
 		session.setAttribute("SortByGenderDepts",null);
 		session.setAttribute("SortByExperiencDepts",null);
 		session.setAttribute("SortByLevelDepts",null);
+		
 
+		
 	}
 }

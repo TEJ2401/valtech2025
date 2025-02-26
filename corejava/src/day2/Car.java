@@ -1,11 +1,13 @@
 package day2;
-
+import javax.persistance.Entity;
 public class Car implements Cloneable{
  private String make;
  private String model;
  private int year;
  private int version;
  private String variant;
+ @Version
+ private int versiond;
  public String getVariant() {
 	return variant;
 }
@@ -34,6 +36,10 @@ protected Object clone() throws CloneNotSupportedException{
 public void setMake(String make) {
 	this.make = make;
 }
+public void setVersiond(int versiond) {
+	this.versiond=versiond;
+}
+public int 
 public String getModel() {
 	return model;
 }
