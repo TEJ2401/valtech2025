@@ -98,7 +98,11 @@ class EmployeeTest2 {
 		assertEquals(emps.get(0),emps.get(1));  // Now this will evaluate to true
 		
 	}
-	
+	@Test
+	void testCompareTo() {
+		Collections.sort(emps);
+		System.out.println("Sorted Employees "+emps);
+	}
 	@Test 
 	void getGenderMap(){
 		Map<Gender,List<Employee>>mp=employeeService.getEmployeeMap(emps);
