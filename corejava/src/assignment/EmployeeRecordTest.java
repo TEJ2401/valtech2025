@@ -1,10 +1,13 @@
 package assignment;
+import assignment.Employee.Gender;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import dao.Employee.Gender;
+
+import assignment.Employee.Gender;;
 
 class EmployeeRecordTest {
 
