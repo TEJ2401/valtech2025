@@ -1,6 +1,7 @@
 package assignment;
 
 import static org.junit.jupiter.api.Assertions.*;
+import assignment.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,8 +12,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import dao.Employee;
-import dao.Employee.Gender;
+import assignment.Employee.Gender;
 
 class EmployeeTest2 {
 
