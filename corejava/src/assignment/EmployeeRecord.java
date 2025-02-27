@@ -1,6 +1,6 @@
 package assignment;
 
-import dao.Employee.Gender;
+import assignment.Employee.Gender;;
 
 public record EmployeeRecord(int id,String name,int age,Gender gender,float salary,int experience,int level) {
 
