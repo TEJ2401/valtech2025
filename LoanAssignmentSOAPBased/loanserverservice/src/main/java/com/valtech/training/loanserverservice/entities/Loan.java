@@ -3,6 +3,8 @@ package com.valtech.training.loanserverservice.entities;
 import java.util.Random;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,10 +17,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Loan")
 public class Loan {
-
+	
+	
 	@Id@GeneratedValue(generator = "loan_seq",strategy=GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "loan_seq",sequenceName = "loan_seq",allocationSize = 1)
 	private long id;
+	
 	
 	public enum LoanType{
 		
@@ -32,6 +36,7 @@ public class Loan {
 	
 	private String name;
 	
+	@Enumerated(EnumType.STRING)
 	private LoanType loanType;
 	
 	private int income;
@@ -42,10 +47,15 @@ public class Loan {
 	
 	private int cibilScore;
 
-	private String asset;
+
 	
 	private int value;
 
+	private String asset;
+	
+	
+	
+	@Enumerated(EnumType.STRING)
 	private LoanStatus loanStatus;
 	
 	public LoanType getLoanType() {
@@ -73,30 +83,18 @@ public class Loan {
 
 	}
 
-	
-	public Loan(long id, String name,LoanType loanType, int pan, int aadhar, String asset, int value) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.loanType=loanType;
-		this.pan = pan;
-		this.aadhar = aadhar;
-		this.asset = asset;
-		this.value = value;
-	}
 
-	public Loan(long id, String name, LoanType loanType, int pan, int aadhar, int cibilScore, String asset, int value,
-			LoanStatus loanStatus) {
+
+	public Loan(String name, LoanType loanType, int income, int pan, int aadhar, String asset, int value) {
 		super();
-		this.id = id;
+		System.out.println("asset"+asset);
 		this.name = name;
 		this.loanType = loanType;
+		this.income = income;
 		this.pan = pan;
 		this.aadhar = aadhar;
-		this.cibilScore = cibilScore;
 		this.asset = asset;
 		this.value = value;
-		this.loanStatus = loanStatus;
 	}
 
 
@@ -145,7 +143,7 @@ public class Loan {
 	}
 
 	public void setAsset(String asset) {
-		asset = asset;
+		this.asset = asset;
 	}
 
 	public int getValue() {
@@ -168,11 +166,12 @@ public class Loan {
 
 
 	public void applyForAndUpdateLoanStatus() {
-		
+		System.out.println(income);
+		System.out.println(asset);
 		this.setCibilScore(new Random().nextInt(100,1000));
 		this.setLoanStatus(LoanStatus.APPLIED);
 	}
-
+	
 
 	public void approveAndUpdateLoanStatus() {
 		if(cibilScore<=600) {

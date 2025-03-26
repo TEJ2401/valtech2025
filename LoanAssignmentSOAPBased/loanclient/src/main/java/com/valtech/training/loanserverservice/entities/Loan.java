@@ -2,6 +2,9 @@ package com.valtech.training.loanserverservice.entities;
 
 import java.util.Random;
 
+import com.valtech.training.loanserverservice.entities.Loan.LoanStatus;
+import com.valtech.training.loanserverservice.entities.Loan.LoanType;
+
 
 public class Loan {
 
@@ -62,29 +65,32 @@ public class Loan {
 	}
 
 	
-	public Loan(long id, String name,LoanType loanType, int pan, int aadhar, String asset, int value) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.loanType=loanType;
-		this.pan = pan;
-		this.aadhar = aadhar;
-		this.asset = asset;
-		this.value = value;
-	}
-
-	public Loan(long id, String name, LoanType loanType, int pan, int aadhar, int cibilScore, String asset, int value,
-			LoanStatus loanStatus) {
+	public Loan(long id, String name, LoanType loanType, int income, int pan, int aadhar, int cibilScore, String asset,
+			int value, LoanStatus loanStatus) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.loanType = loanType;
+		this.income = income;
 		this.pan = pan;
 		this.aadhar = aadhar;
 		this.cibilScore = cibilScore;
 		this.asset = asset;
 		this.value = value;
 		this.loanStatus = loanStatus;
+	}
+
+
+	public Loan( String name, LoanType loanType, int income, int pan, int aadhar, String asset, int value) {
+		super();
+
+		this.name = name;
+		this.loanType = loanType;
+		this.income = income;
+		this.pan = pan;
+		this.aadhar = aadhar;
+		this.asset = asset;
+		this.value = value;
 	}
 
 
@@ -156,7 +162,7 @@ public class Loan {
 
 
 	public void applyForAndUpdateLoanStatus() {
-		
+		System.out.println(asset+"ADCBVDJVNFDJ");
 		this.setCibilScore(new Random().nextInt(100,1000));
 		this.setLoanStatus(LoanStatus.APPLIED);
 	}

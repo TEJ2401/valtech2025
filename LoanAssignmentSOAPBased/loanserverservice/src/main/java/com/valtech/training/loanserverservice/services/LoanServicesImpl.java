@@ -4,12 +4,13 @@ import java.util.Random;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.valtech.training.loanserverservice.VO.LoanVO;
+
 import com.valtech.training.loanserverservice.entities.Loan;
 import com.valtech.training.loanserverservice.repos.LoanRepo;
 
@@ -25,6 +26,8 @@ public class LoanServicesImpl implements LoanService {
 	@Override
 	public Loan applyForLoan(Loan loan) {
 	loan.applyForAndUpdateLoanStatus();
+	System.out.println("Asset"+loan.getAsset());
+	loan.setCibilScore(new Random().nextInt(100,1000));
 	return loanRepo.save(loan);
 	}
 	
@@ -37,5 +40,7 @@ public class LoanServicesImpl implements LoanService {
 		return loanRepo.save(loan);
 		
 	}
+	
+	
 	
 }
