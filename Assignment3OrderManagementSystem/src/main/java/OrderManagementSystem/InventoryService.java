@@ -1,4 +1,4 @@
-package spring.OrderManagementSystem;
+package OrderManagementSystem;
 
 public interface InventoryService {
 
