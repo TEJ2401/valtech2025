@@ -19,28 +19,10 @@ public class Employee implements Comparable<Employee> {
 	private int salary;
 	private Gender gender;
 	private int level;
-	public Employee(int id, String name, int age, int salary, Gender gender, int level, int exp, int deptno) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.salary = salary;
-		this.gender = gender;
-		this.level = level;
-		this.exp = exp;
-		this.deptno = deptno;
-	}
 	private int exp;
 	private int deptno;
 	
-	public int getDeptno() {
-		return deptno;
-	}
-
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
-	}
-
+	
 	public Employee() {}
 	
 	public Employee(int id, String name, int age, int salary, Gender male, int level, int exp) {
@@ -54,6 +36,28 @@ public class Employee implements Comparable<Employee> {
 		this.exp = exp;
 		
 	}
+	public Employee(int id, String name, int age, int salary, Gender gender, int level, int exp, int deptno) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+		this.gender = gender;
+		this.level = level;
+		this.exp = exp;
+		this.deptno = deptno;
+	}
+
+	
+	public int getDeptno() {
+		return deptno;
+	}
+
+	public void setDeptno(int deptno) {
+		this.deptno = deptno;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash("Office",age, exp, gender, id, level, name, salary,"Employee");

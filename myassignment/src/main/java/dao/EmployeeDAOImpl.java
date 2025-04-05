@@ -15,21 +15,21 @@ import java.sql.SQLException;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 
-	private ServletContext sce;
+
+	private String userName;
+	private String password;
+	private String dataUrl;
 	
-	public EmployeeDAOImpl(ServletContext sce) {
-		super();
-		this.sce = sce;
-	}
-	public ServletContext getSce() {
-		return sce;
-	}
-	public void setSce(ServletContext sce) {
-		this.sce = sce;
-	}
 	private Connection getConnection()  throws SQLException{
-		return DriverManager.getConnection((String)sce.getAttribute("jdbc_url"),(String)sce.getAttribute("jdbc_username"),(String)sce.getAttribute("jdbc_password"));
+		System.out.println(dataUrl);
+		return DriverManager.getConnection(dataUrl,userName,"postgres");
 		
+	}
+	public EmployeeDAOImpl(String userName, String password, String dataUrl) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.dataUrl = dataUrl;
 	}
 	@Override
 	public void save(Employee e) {

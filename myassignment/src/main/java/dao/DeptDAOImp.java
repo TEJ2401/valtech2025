@@ -15,15 +15,23 @@ import servlets.Dept;
 public class DeptDAOImp implements DeptDAO {
 	
 	private ServletContext sce;
-	
+	private String userName;
+	private String password;
+	private String dataUrl;
 	
 	public DeptDAOImp(ServletContext sce) {
 		super();
 		this.sce = sce;
 	}
 	private Connection getConnection()  throws SQLException{
-		return DriverManager.getConnection((String)sce.getAttribute("jdbc_url"),(String)sce.getAttribute("jdbc_username"),(String)sce.getAttribute("jdbc_password"));
+		return DriverManager.getConnection(dataUrl,userName,password);
 		
+	}
+	public DeptDAOImp(String userName, String password, String dataUrl) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.dataUrl = dataUrl;
 	}
 	@Override
 	public void save(Dept d) {
@@ -37,8 +45,6 @@ public class DeptDAOImp implements DeptDAO {
 		catch(Exception ex) {
 			throw new RuntimeException (ex);
 		}
-		// TODO Auto-generated method stub
-		
 		
 	}
 	private void setValuestoPrepareStatement(Dept e, PreparedStatement ps) throws SQLException {
@@ -103,7 +109,7 @@ public class DeptDAOImp implements DeptDAO {
 
 
 	public Dept next(int id) {
-		// TODO Auto-generated method stu
+
 		try(Connection conn=getConnection()){
 			System.out.println("In the Next Method");
 			PreparedStatement ps=conn.prepareStatement("SELECT DEPTNO,NAME,LOCATION from Department where (DEPTNO=?)");
@@ -129,7 +135,7 @@ public class DeptDAOImp implements DeptDAO {
 	}
 
 	public Dept previous(int id) {
-		// TODO Auto-generated method stub
+
 		try(Connection conn=getConnection()){
 			
 			PreparedStatement ps=conn.prepareStatement("SELECT DEPTNO,NAME,LOCATION from Department where DEPTNO=?");
@@ -159,7 +165,7 @@ public class DeptDAOImp implements DeptDAO {
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+
 		try(Connection conn=getConnection()){
 			PreparedStatement ps=conn.prepareStatement("DELETE FROM DEPARTMENT WHERE ID=?");
 			ps.setInt(1, id);
@@ -177,7 +183,7 @@ public class DeptDAOImp implements DeptDAO {
 
 	@Override
 	public Dept get(int id) {
-		// TODO Auto-generated method stub
+
 		try(Connection conn=getConnection()){
 			PreparedStatement ps=conn.prepareStatement("Select DEPTNO,NAME,LOCATION from Department where DEPTNO=?");
 			ps.setInt(1, id);
@@ -198,7 +204,7 @@ public class DeptDAOImp implements DeptDAO {
 
 	@Override
 	public List<Dept> getAll() {
-		// TODO Auto-generated method stub
+
 		try(Connection conn=getConnection()){
 			List<Dept> ls=new ArrayList<>();
 			PreparedStatement ps=conn.prepareStatement("Select DEPTNO,NAME,LOCATION FROM Department");
