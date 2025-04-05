@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns="/login")
 public class LoginServlet extends HttpServlet {
 
-	public static final String HOME_PAGE="arithmetic.jsp";
+	public static final String HOME_PAGE="hello";
 	public static final String LOGIN_PAGE="login.jsp";
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {

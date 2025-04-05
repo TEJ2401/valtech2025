@@ -32,10 +32,10 @@ public class ConfigListener implements ServletContextListener {
 				context.setAttribute("jdbc_password",pd.getProperty("jdbc.password"));
 				context.setAttribute("jdbc_driver",pd.getProperty("jdbc.driver"));
 				System.out.println(pd.getProperty("jdbc.driver"));
-				dao=new EmployeeDAOImpl(context);
+//				dao=new EmployeeDAOImpl(context);
 				deptdao=new DeptDAOImp(context);
 				context.setAttribute("dept",deptdao);
-				context.setAttribute("emp",dao);
+//				context.setAttribute("emp",dao);
 				System.out.println();
 			
 			try {

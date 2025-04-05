@@ -43,8 +43,8 @@ public class arithmeticServlet extends HttpServlet {
 				+ "</form>\n"
 				+ "</body>\n"
 				+ "</html> """;
-		
-		resp.getWriter().print(content);
+		req.getRequestDispatcher("arithmetic.jsp").forward(req, resp);
+//		resp.getWriter().print(content);
 	}
 	
 	@Override

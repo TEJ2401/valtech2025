@@ -35,9 +35,11 @@ public class DeptServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 //		ServletContext sce=config.getServletContext();
-//		deptdao=(DepDAOImpl)sce.getAttribute("Department");
-		deptdao=(DeptDAO)config.getServletContext().getAttribute("dept");
-		empdao=(EmployeeDAOImpl)config.getServletContext().getAttribute("emp");
+		ServletContext sce=config.getServletContext();
+		deptdao=new DeptDAOImp((String)sce.getAttribute("jdbc_username"),(String)sce.getAttribute("jdbc_password"),(String)sce.getAttribute("jdbc_url"));
+		System.out.println(deptdao.first());
+		empdao=new EmployeeDAOImpl((String)sce.getAttribute("jdbc_username"),(String)sce.getAttribute("jdbc_password"),(String)sce.getAttribute("jdbc_url"));
+		System.out.println(empdao.getAll());
 		empservice=new EmployeeService();
 		sesservice=new SessionService();
 //		empdao=(EmployeeDAOImpl)sce.getAttribute("Employee");
@@ -108,7 +110,17 @@ public class DeptServlet extends HttpServlet {
 			req.getRequestDispatcher("depts.jsp").forward(req, resp);
 			return;
 		}
-		
+		if("SortById".equals(req.getParameter("operation"))) {
+			Boolean a=(Boolean)session.getAttribute("SortByIdDepts");
+			Dept dep=(Dept)session.getAttribute("current");
+			List<Employee>deptemployees=empdao.getEmployeeByDepartment(dep.getId());
+			List<Employee>sortedList=empservice.sortById(a,deptemployees);
+			req.setAttribute("emps", sortedList);
+			req.setAttribute("dept", dep);
+		    session.setAttribute("SortByIdDepts",session.getAttribute("SortByIdDepts")==null?true:!(Boolean)session.getAttribute("SortByIdDepts"));
+		req.getRequestDispatcher("depts.jsp").forward(req, resp);
+		return;
+		}
 		if("SortByName".equals(req.getParameter("operation"))) {
 			Boolean a=(Boolean)session.getAttribute("SortByNameDepts");
 			Dept dep=(Dept)session.getAttribute("current");
@@ -182,7 +194,6 @@ else if("SortByAge".equals(req.getParameter("operation"))) {
 		session.setAttribute("current",deptdao.first());
 		System.out.println("Session"+session.getAttribute("current"));
 		}
-//		session.setAttribute("current",deptdao.first());
 		System.out.println(empdao.getEmployeeByDepartment(deptdao.first().getId()));
 
 		req.getRequestDispatcher("/depts.jsp").forward(req, resp);

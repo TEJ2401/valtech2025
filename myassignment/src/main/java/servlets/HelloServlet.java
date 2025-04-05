@@ -25,7 +25,7 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	String name=request.getParameter("name");
+	String name=request.getParameter("username");
 		PrintWriter out=response.getWriter();
 		out.print("Hello Servlets"+name+" !");
 		

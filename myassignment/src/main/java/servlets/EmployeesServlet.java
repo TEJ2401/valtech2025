@@ -31,12 +31,11 @@ public class EmployeesServlet extends HttpServlet{
 //		ServletContext sce =config.getServletContext();
 		System.out.println("hello init");
 //		deptdao=(DeptDAO)config.getServletContext().getAttribute("dept");
-		dao=(EmployeeDAOImpl)config.getServletContext().getAttribute("emp");
+		ServletContext sce=config.getServletContext();
+		dao=new EmployeeDAOImpl((String)sce.getAttribute("jdbc_username"),(String)sce.getAttribute("jdbc_password"),(String)sce.getAttribute("jdbc_url"));
 		empservice=new EmployeeService();
 		
 	}
-	
-	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,40 +45,45 @@ public class EmployeesServlet extends HttpServlet{
 		System.out.println(req.getParameter("buttonValue"));
 		System.out.println("rew"+req.getParameter("reset"));
 			if("RESET".equals(req.getParameter("reset"))) {
-				req.setAttribute("emps", dao.getAll());;
+				req.setAttribute("emps", dao.getAll());
 				req.getRequestDispatcher("/employees.jsp").forward(req, resp);
 				return;
 			}
 			if("employees".equals(req.getParameter("buttonValue")) || "depts".equals(req.getParameter("buttonValue"))) {
 				
 				System.out.println("Button Value"+req.getParameter("buttonValue"));
-				List<Employee>l=null;
+				List<Employee>employeesList=null;
 				if("employees".equals(req.getParameter("buttonValue")))
 				{
-					l=dao.getAll() ;
+					employeesList=dao.getAll() ;
 				}
 				else if("depts".equals(req.getParameter("buttonValue"))) {
 					Dept d=(Dept)session.getAttribute("current");
-					l=dao.getEmployeeByDepartment(d.getId());
+					employeesList=dao.getEmployeeByDepartment(d.getId());
 				}
-				
-				if(req.getParameter("ab")!=null && !req.getParameter("ab").isEmpty()) {
+				if(req.getParameter("searchbyid")!=null && !req.getParameter("searchbyid").isEmpty()) {
+					employeesList=empservice.searchById(employeesList,operation,Integer.parseInt(req.getParameter("searchbyid")));
+				}
+				if(req.getParameter("searchbyname")!=null && !req.getParameter("searchbyname").isEmpty()) {
+					employeesList=empservice.searchByName(employeesList,operation,req.getParameter("searchbyname"));
+				}
+				if(req.getParameter("Age")!=null && !req.getParameter("Age").isEmpty()) {
 					System.out.println("InSide");
-					l=empservice.searchByAge(l,(String)(req.getParameter("age")),Integer.parseInt(req.getParameter("ab")));
+					employeesList=empservice.searchByAge(employeesList,(String)(req.getParameter("age")),Integer.parseInt(req.getParameter("Age")));
 				}
-				if(req.getParameter("cd")!=null && !req.getParameter("cd").isEmpty()) {
-					l=empservice.searchBySalary(l,(String)(req.getParameter("salary")),Integer.parseInt(req.getParameter("cd")));
+				if(req.getParameter("Salary")!=null && !req.getParameter("Salary").isEmpty()) {
+					employeesList=empservice.searchBySalary(employeesList,(String)(req.getParameter("salary")),Integer.parseInt(req.getParameter("Salary")));
 				}
-				if(req.getParameter("ef")!=null && !req.getParameter("ef").isEmpty()) {
-					l=empservice.searchByGender(l,(String)(req.getParameter("gender")),req.getParameter("ef"));
+				if(req.getParameter("Gender")!=null && !req.getParameter("Gender").isEmpty()) {
+					employeesList=empservice.searchByGender(employeesList,(String)(req.getParameter("gender")),req.getParameter("Gender"));
 				}
-				if(req.getParameter("gh")!=null && !req.getParameter("gh").isEmpty()) {
-					l=empservice.searchByExperience(l,(String)(req.getParameter("expr")),Integer.parseInt(req.getParameter("gh")));
+				if(req.getParameter("Experience")!=null && !req.getParameter("Experience").isEmpty()) {
+					employeesList=empservice.searchByExperience(employeesList,(String)(req.getParameter("expr")),Integer.parseInt(req.getParameter("Experience")));
 				}
-				if(req.getParameter("ij")!=null && !req.getParameter("ij").isEmpty()) {
-					l=empservice.searchByLevel(l,(String)(req.getParameter("levelr")),Integer.parseInt(req.getParameter("ij")));
+				if(req.getParameter("Level")!=null && !req.getParameter("Level").isEmpty()) {
+					employeesList=empservice.searchByLevel(employeesList,(String)(req.getParameter("levelr")),Integer.parseInt(req.getParameter("Level")));
 				}
-				req.setAttribute("emps",l);
+				req.setAttribute("emps",employeesList);
 				
 				if("employees".equals(req.getParameter("buttonValue"))) {
 					req.getRequestDispatcher("employees.jsp").forward(req, resp);
@@ -94,7 +98,14 @@ public class EmployeesServlet extends HttpServlet{
 
 	
 			
-		
+			if("SortById".equals(operation)) {			
+				Boolean a=(Boolean)session.getAttribute("SortById");
+				req.setAttribute("emps",empservice.sortById(a,dao.getAll()));
+				session.setAttribute("SortById",session.getAttribute("SortById")==null?true:!(Boolean)session.getAttribute("SortById"));
+				req.getRequestDispatcher("employees.jsp").forward(req, resp);
+				return;
+				
+			}
 
 		if("SortByName".equals(operation)) {			
 			Boolean a=(Boolean)session.getAttribute("SortByName");
