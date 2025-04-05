@@ -1,4 +1,4 @@
-package spring.OrderManagementSystem;
+package OrderManagementSystem;
 
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
