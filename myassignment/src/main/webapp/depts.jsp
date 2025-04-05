@@ -50,11 +50,13 @@ Current Department=${current}
 	</tr>
 
 </table>
-<table>
+<table border="1">
 </div>
 <tr>
 
-<th>Id</th>
+
+<th> <a href="depts?operation=SortById">Id</a></th>
+
 <th> <a href="depts?operation=SortByName">Name</a></th>
 <th ><a href="depts?operation=SortByAge">Age</a> </th>
 <th ><a href="depts?operation=SortByGender">Gender</a></th>
@@ -80,10 +82,9 @@ Current Department=${current}
 </c:forEach>
 <tr>
 <tr>
-<td colspan="7"><a href="employees?operation=newEmp&current=${current}">New Employee</a></td>
+<td colspan="7"><a href="employees?operation=newEmp&current=${current.id}">New Employee</a></td>
 </tr>
 
-<th> <a href="employees?operation=SortByNameDepts&current=${current.id}">Name</a></th>
 </table>
 </form>
 <jsp:include page="selectMenu.jsp" >	

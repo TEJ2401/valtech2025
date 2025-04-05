@@ -13,11 +13,13 @@
 <body>
 <form action="employees" method="get">
 <div>
-<table>
+<table border="1">
 
 <tr>
 
-<th>Id</th>
+
+<th> <a href="employees?operation=SortById">Id</a></th>
+
 <th> <a href="employees?operation=SortByName">Name</a></th>
 <th ><a href="employees?operation=SortByAge">Age</a> </th>
 <th ><a href="employees?operation=SortByGender">Gender</a></th>
