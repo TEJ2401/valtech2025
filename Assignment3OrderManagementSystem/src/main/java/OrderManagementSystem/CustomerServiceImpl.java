@@ -1,4 +1,4 @@
-package spring.OrderManagementSystem;
+package OrderManagementSystem;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
