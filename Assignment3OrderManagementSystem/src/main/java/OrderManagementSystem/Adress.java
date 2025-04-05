@@ -1,4 +1,4 @@
-package spring.OrderManagementSystem;
+package OrderManagementSystem;
 
 import javax.persistence.Embeddable;
 
