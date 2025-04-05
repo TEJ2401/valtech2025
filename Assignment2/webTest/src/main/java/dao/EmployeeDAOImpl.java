@@ -22,7 +22,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	
 	private Connection getConnection()  throws SQLException{
 		System.out.println(dataUrl);
-		return DriverManager.getConnection(dataUrl,userName,"postgres");
+		return DriverManager.getConnection(dataUrl,userName,password);
 		
 	}
 	public EmployeeDAOImpl(String userName, String password, String dataUrl) {
