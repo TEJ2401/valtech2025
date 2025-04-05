@@ -14,15 +14,12 @@ import servlets.Dept;
 
 public class DeptDAOImp implements DeptDAO {
 	
-	private ServletContext sce;
+
 	private String userName;
 	private String password;
 	private String dataUrl;
 	
-	public DeptDAOImp(ServletContext sce) {
-		super();
-		this.sce = sce;
-	}
+
 	private Connection getConnection()  throws SQLException{
 		return DriverManager.getConnection(dataUrl,userName,password);
 		
