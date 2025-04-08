@@ -34,10 +34,10 @@ public class ResultServicesImpl implements ResultServices {
 	public ResultVO getResult(long id) {
 		
 		QuizResultVO quizResultVO= quizClient.getQuizById(id);
-	
-		int score=quizResultVO.questionResults().stream().filter(w->w.submittedAnswer().equals(w.correctAnswer())).mapToInt(w->1).sum();
+		System.out.println(quizResultVO);
+		int score=quizResultVO.questions().stream().filter(w->w.submittedAnswer().equals(w.correctAnswer())).mapToInt(w->1).sum();
 		
-		return ResultVO.from(resultRepo.save(new Result(0L,id,(score/quizResultVO.questionResults().size())*100)));
+		return ResultVO.from(resultRepo.save(new Result(0L,id,score,(score/quizResultVO.questions().size())*100)));
 		
 	}
 	

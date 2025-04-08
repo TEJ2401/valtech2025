@@ -17,7 +17,7 @@ public class QuizClient {
 		
 		RestTemplate restTemplate=new RestTemplate();
 
-		String url="http://localhost:9020/api/v1/quizes/"+id;
+		String url="http://localhost:9020/api/v1/quizes/assess/"+id;
 		
 		QuizResultVO quizResult= restTemplate.getForObject(url,QuizResultVO.class);
 		

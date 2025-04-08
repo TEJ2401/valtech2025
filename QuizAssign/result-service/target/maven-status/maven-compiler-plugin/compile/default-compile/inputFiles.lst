@@ -1,0 +1,12 @@
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/ResultServiceApplication.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/VO/QuestionResultVO.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/VO/QuestionVO.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/VO/QuizResultVO.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/VO/QuizVO.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/VO/ResultVO.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/controllers/ResultController.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/entities/Result.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/repo/ResultRepo.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/services/QuizClient.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/services/ResultServices.java
+/Users/tejjoshi/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/result_service/services/ResultServicesImpl.java

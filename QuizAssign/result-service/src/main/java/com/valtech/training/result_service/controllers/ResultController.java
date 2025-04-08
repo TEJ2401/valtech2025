@@ -29,12 +29,12 @@ public class ResultController {
 //	}
 	
 	@GetMapping("/{id}")
-	public ResultVO checkQuiz(@PathVariable long id ) {
+	public ResultVO checkQuiz(@PathVariable("id") long id ) {
 		
 		return resultServices.getResult(id);
 		
 	}
 	
-	
+
 	
 }

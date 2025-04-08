@@ -22,11 +22,12 @@ public class Result {
 	private int percentage;
 	
 	
-	public Result(long id, long quizId, int score) {
+	public Result(long id, long quizId, int score,int percentage) {
 		super();
 		this.id = id;
 		this.quizId = quizId;
 		this.score = score;
+		this.percentage=percentage;
 	}
 	
 	public Result() {
