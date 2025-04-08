@@ -1,0 +1,8 @@
+com/valtech/training/question_service/controllers/QuestionController.class
+com/valtech/training/question_service/QuestionServiceApplication.class
+com/valtech/training/question_service/entities/Question.class
+com/valtech/training/question_service/repo/QuestionRepo.class
+com/valtech/training/question_service/VO/QuestionVO.class
+com/valtech/training/question_service/services/QuestionService.class
+com/valtech/training/question_service/services/QuestionServicesImpl.class
+com/valtech/training/question_service/controllers/QuestionAnswerController.class
